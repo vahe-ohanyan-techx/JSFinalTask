@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS Final Task</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="navbar">
+        <div class="navbar__section navbar__section--left">
+          <a href="#" class="navbar__logo-link">
+            <img src="./assets/TMDB_Logo.png" alt="TMDB_Logo" />
+          </a>
+          <ul class="navbar__menu">
+            <li class="navbar__item">
+              <a href="#" class="navbar__link">Movies</a>
+              <ul class="navbar__dropdown">
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">Now Playing</a></li>
+                <li><a href="#">Upcoming</a></li>
+                <li><a href="#">Top Rated</a></li>
+              </ul>
+            </li>
+            <li class="navbar__item">
+              <a href="#" class="navbar__link">TV Shows</a>
+              <ul class="navbar__dropdown">
+                <li><a href="#">Popular</a></li>
+                <li><a href="#">Airing Today</a></li>
+                <li><a href="#">On TV</a></li>
+                <li><a href="#">Top Rated</a></li>
+              </ul>
+            </li>
+            <li class="navbar__item">
+              <a href="#" class="navbar__link">People</a>
+              <ul class="navbar__dropdown">
+                <li><a href="#">Popular</a></li>
+              </ul>
+            </li>
+            <li class="navbar__item">
+              <a href="#" class="navbar__link">More</a>
+              <ul class="navbar__dropdown">
+                <li><a href="#">Discussions</a></li>
+                <li><a href="#">LeaderBoard</a></li>
+                <li><a href="#">Support</a></li>
+                <li><a href="#">API Documentation</a></li>
+                <li><a href="#">API for Business</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+
+        <div class="navbar__section navbar__section--right">
+          <ul class="navbar__menu">
+            <li class="navbar__item">
+              <a href="#">
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="navbar__link--PlusSvg"
+                >
+                  <path
+                    d="M12 4V20M20 12H4"
+                    stroke="currentColor"
+                    stroke-width="5"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </a>
+            </li>
+            <li class="navbar__item">
+              <a href="#" class="navbar__link language">EN</a>
+            </li>
+            <li class="navbar__item">
+              <a href="#" class="navbar__link">Login</a>
+            </li>
+            <li class="navbar__item">
+              <a href="#" class="navbar__link">Join TMDB</a>
+            </li>
+            <li class="navbar__item">
+              <a href="#" class="navbar__link"
+                ><img
+                  class="navbar__link--img"
+                  src="./assets/navbarSearchIcon.svg"
+                  alt="SearchIcon"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <nav class="navbar navbar--mobile">
+        <button class="nav__burger" aria-label="Menu">
+          <svg width="28" height="22" viewBox="0 0 28 22" fill="none">
+            <line
+              x1="1"
+              y1="1"
+              x2="27"
+              y2="1"
+              stroke="white"
+              stroke-width="2"
+            />
+            <line
+              x1="1"
+              y1="11"
+              x2="27"
+              y2="11"
+              stroke="white"
+              stroke-width="2"
+            />
+            <line
+              x1="1"
+              y1="21"
+              x2="27"
+              y2="21"
+              stroke="white"
+              stroke-width="2"
+            />
+          </svg>
+        </button>
+
+        <a href="/" class="navbar__logo-link navbar__logo-link--center">
+          <img
+            src="./assets/Footer_logo.svg"
+            alt="Logo"
+            class="navbar__mobile--img"
+          />
+        </a>
+        <div class="navbar__right-icon">
+          <a href="">
+            <svg
+              width="120"
+              height="120"
+              viewBox="0 0 24 24"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+              class="nav__ring"
+            >
+              <path d="M12 22a2 2 0 0 0 2-2h-4a2 2 0 0 0 2 2z" fill="white" />
+              <path
+                d="M18 16V11a6 6 0 1 0-12 0v5L4 18h16l-2-2z"
+                fill="white"
+              ></path>
+            </svg>
+          </a>
+
+          <a href="#" class="navbar__link"
+            ><img
+              class="navbar__mobile--search"
+              src="./assets/navbarSearchIcon.svg"
+              alt="SearchIcon"
+          /></a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <div class="main_content">
+        <div class="main_title"><h2>Popular Movies</h2></div>
+
+        <div class="main__content">
+          <aside class="filter">
+            <!-- Sort part -->
+            <div class="filter__card">
+              <div class="filter__header" onclick="toggleFilterCard(this)">
+                Sort
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="closedDropdown"
+                  id="dropdownClosed"
+                >
+                  <path
+                    d="M6 4L10 8L6 12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="openedDropdown"
+                  id="dropdownOpened"
+                >
+                  <path
+                    d="M4 6L8 10L12 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <div class="sort">
+                <label for="" class="sort__label">Sort Results By</label>
+
+                <select class="filter-panel__select" id="sortBy">
+                  <option id="sort-pop-desc" value="popularity.desc">
+                    Popularity Descending
+                  </option>
+                  <option id="sort-pop-asc" value="popularity.asc">
+                    Popularity Ascending
+                  </option>
+                  <option id="sort-rating-desc" value="vote_average.desc">
+                    Rating Descending
+                  </option>
+                  <option id="sort-rating-asc" value="vote_average.asc">
+                    Rating Ascending
+                  </option>
+                  <option id="sort-release-desc" value="release_date.desc">
+                    Release Date Descending
+                  </option>
+                  <option id="sort-release-asc" value="release_date.asc">
+                    Release Date Ascending
+                  </option>
+                  <option id="sort-title-asc" value="title.asc">
+                    Title(A-Z)
+                  </option>
+                  <option id="sort-title-desc" value="title.desc">
+                    Title(Z-A)
+                  </option>
+                </select>
+              </div>
+            </div>
+            <!-- Filter Part -->
+            <div class="filter__card">
+              <div class="filter__header" onclick="toggleFilterCard(this)">
+                Filters
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="closedDropdown"
+                  id="dropdownClosed"
+                >
+                  <path
+                    d="M6 4L10 8L6 12"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+                <svg
+                  width="24"
+                  height="24"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="openedDropdown"
+                  id="dropdownOpened"
+                >
+                  <path
+                    d="M4 6L8 10L12 6"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  />
+                </svg>
+              </div>
+
+              <div class="sort">
+                <div class="showMe">
+                  <div class="showMe-header">
+                    <label for="" class="showMe__label">Show Me</label>
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                    >
+                      <circle cx="12" cy="12" r="10" fill="#9ca3af" />
+                      <text
+                        x="12"
+                        y="12"
+                        text-anchor="middle"
+                        dominant-baseline="central"
+                        font-family="Arial, sans-serif"
+                        font-size="14"
+                        font-weight="bold"
+                        fill="white"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                  </div>
+                  <div class="showMe__check">
+                    <input
+                      type="checkbox"
+                      class="showMe__check--checkbox"
+                      checked
+                    />
+                    <p>Everything</p>
+                  </div>
+                  <div class="showMe__check">
+                    <input type="checkbox" class="showMe__check--checkbox" />
+                    <p>Movies I Haven't Seen</p>
+                  </div>
+                  <div class="showMe__check">
+                    <input type="checkbox" class="showMe__check--checkbox" />
+                    <p>Movies I HaveSeen</p>
+                  </div>
+                </div>
+
+                <div class="releaseDate">
+                  <label for="releaseDate" class="releaseDate__label"
+                    >Release Dates</label
+                  >
+                  <div class="releaseDate__toggle">
+                    <input
+                      type="checkbox"
+                      class="releaseDate__checkbox"
+                      checked
+                    />
+                    <p>Search all releases?</p>
+                  </div>
+                  <div class="releaseDate__range">
+                    <label for="releaseDate" class="releaseDate__range--label"
+                      >from</label
+                    >
+                    <input
+                      type="date"
+                      class="releaseDate__range--input"
+                      id="releaseDate__fromInput"
+                      placeholder="YYYY/MM/DD"
+                    />
+                  </div>
+                  <div class="releaseDate__range">
+                    <label for="releaseDate" class="releaseDate__range--label"
+                      >to</label
+                    >
+                    <input
+                      type="date"
+                      class="releaseDate__range--input"
+                      id="releaseDate__toInput"
+                      placeholder="YYYY/MM/DD"
+                    />
+                  </div>
+                </div>
+
+                <div class="genres">
+                  <label class="genres__label">Genres</label>
+
+                  <ul class="genres__list">
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-28">
+                        Action
+                      </button>
+                    </li>
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-12">
+                        Adventure
+                      </button>
+                    </li>
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-16">
+                        Animation
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-35">
+                        Comedy
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-80">
+                        Crime
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-99">
+                        Documentary
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-18">
+                        Drama
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-10751">
+                        Family
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-14">
+                        Fantasy
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-36">
+                        History
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-27">
+                        Horror
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-10402">
+                        Music
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-9648">
+                        Mystery
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-10749">
+                        Romance
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-878">
+                        Science Fiction
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-10770">
+                        TV Movie
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-53">
+                        Thriller
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-10752">
+                        War
+                      </button>
+                    </li>
+
+                    <li class="genres__item">
+                      <button class="genres__button" id="genres-37">
+                        Western
+                      </button>
+                    </li>
+                  </ul>
+                </div>
+
+                <div class="certification">
+                  <label for="" class="certification__label"
+                    >Certification</label
+                  >
+                </div>
+
+                <div class="language">
+                  <div class="filter-panel__language-header">
+                    <label for="" class="filter-panel__language"
+                      >Language</label
+                    >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                      width="24"
+                      height="24"
+                    >
+                      <circle cx="12" cy="12" r="10" fill="#9ca3af" />
+                      <text
+                        x="12"
+                        y="12"
+                        text-anchor="middle"
+                        dominant-baseline="central"
+                        font-family="Arial, sans-serif"
+                        font-size="14"
+                        font-weight="bold"
+                        fill="white"
+                      >
+                        ?
+                      </text>
+                    </svg>
+                  </div>
+                  <select class="filter-panel__select" id="languageSelection">
+                    <option value="">None Selected</option>
+                    <option value="en">English</option>
+                    <option value="es">Spanish</option>
+                    <option value="fr">French</option>
+                    <option value="de">German</option>
+                    <option value="it">Italian</option>
+                    <option value="pt">Portuguese</option>
+                    <option value="ru">Russian</option>
+                    <option value="ja">Japanese</option>
+                    <option value="ko">Korean</option>
+                    <option value="zh">Chinese</option>
+                    <option value="hi">Hindi</option>
+                    <option value="ar">Arabic</option>
+                    <option value="tr">Turkish</option>
+                    <option value="nl">Dutch</option>
+                    <option value="sv">Swedish</option>
+                    <option value="fi">Finnish</option>
+                    <option value="da">Danish</option>
+                    <option value="no">Norwegian</option>
+                    <option value="pl">Polish</option>
+                    <option value="cs">Czech</option>
+                    <option value="hu">Hungarian</option>
+                    <option value="el">Greek</option>
+                    <option value="he">Hebrew</option>
+                    <option value="th">Thai</option>
+                    <option value="vi">Vietnamese</option>
+                    <option value="id">Indonesian</option>
+                    <option value="ms">Malay</option>
+                    <option value="ro">Romanian</option>
+                    <option value="bg">Bulgarian</option>
+                    <option value="uk">Ukrainian</option>
+                    <option value="sr">Serbian</option>
+                    <option value="hr">Croatian</option>
+                  </select>
+                </div>
+
+                <div class="userScore">
+                  <label class="userScore__label">User Score</label>
+
+                  <div class="userScore__range-container">
+                    <div class="userScore__range-track"></div>
+                    <div class="userScore__range-fill" id="rangeFill"></div>
+                    <input
+                      type="range"
+                      max="10"
+                      min="0"
+                      value="0"
+                      step="0.5"
+                      class="userScore__range"
+                      id="minRange"
+                    />
+                    <input
+                      type="range"
+                      max="10"
+                      min="0"
+                      value="10"
+                      step="0.5"
+                      class="userScore__range"
+                      id="maxRange"
+                    />
+                  </div>
+
+                  <div class="userScore__range-values">
+                    <span>0</span>
+                    <span>5</span>
+                    <span>10</span>
+                  </div>
+                </div>
+
+                <div class="userVotes">
+                  <label for="" class="userVotes__label"
+                    >Minimum User Votes</label
+                  >
+                  <input
+                    type="range"
+                    max="500"
+                    min="0"
+                    step="50"
+                    class="userVotes__range"
+                    id="userVotesRange"
+                  />
+                  <div class="userVotes__range__rates">
+                    <span>0</span>
+                    <span>100</span>
+                    <span>200</span>
+                    <span>300</span>
+                    <span>400</span>
+                    <span>500</span>
+                  </div>
+                </div>
+
+                <div class="runTime">
+                  <label class="runTime__label">Runtime</label>
+
+                  <div class="runTime__range-container">
+                    <div class="runTime__range-track"></div>
+                    <div
+                      class="runTime__range-fill"
+                      id="rangeFillRuntime"
+                    ></div>
+                    <input
+                      type="range"
+                      max="300"
+                      min="0"
+                      value="0"
+                      step="5"
+                      class="runTime__range"
+                      id="minRuntime"
+                    />
+                    <input
+                      type="range"
+                      max="300"
+                      min="0"
+                      value="300"
+                      step="5"
+                      class="runTime__range"
+                      id="maxRuntime"
+                    />
+                  </div>
+
+                  <div class="runTime__range-values">
+                    <span>0</span>
+                    <span>120</span>
+                    <span>240</span>
+                    <span>360</span>
+                  </div>
+                </div>
+
+                <div class="keywords__search">
+                  <label for="" class="keywords__search--label">Keywords</label>
+                  <input
+                    type="text"
+                    max="500"
+                    min="0"
+                    id="keywordsSearch"
+                    class="keywords__search--input"
+                    placeholder="Filter by keywords..."
+                  />
+
+                  <ul class="keyword__suggestions" id="keywordSuggestions"></ul>
+                </div>
+              </div>
+            </div>
+
+            <button class="sort__filter__Btn" id="searchBtn">Search</button>
+            <!-- <div class="spinner"></div> -->
+          </aside>
+
+          <div class="movie__panel" id="moviesPanel">
+            <div class="movies__grid" id="moviesGrid"></div>
+            <button class="load--more" id="loadMore">Load More</button>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <div>
+      <button class="searchBtn__Appeared" id="searchBtnAppeared">Search</button>
+    </div>
+
+    <footer>
+      <div class="footer">
+        <div class="footer__section--first">
+          <a href="#">
+            <img
+              src="./assets/Footer_logo.svg"
+              alt="Logo"
+              class="footer__section--img"
+            />
+          </a>
+          <button class="footer__section--button">JOIN THE COMMUNITY</button>
+        </div>
+
+        <div class="footer__section">
+          <h3 class="footer__section--header">THE BASICS</h3>
+          <ul class="footer__section--list">
+            <li><a href="#">About TMDB</a></li>
+            <li><a href="#">Contact Us</a></li>
+            <li><a href="#">API Documentation</a></li>
+            <li><a href="#">API for Business</a></li>
+            <li><a href="#">System Status</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h3 class="footer__section--header">GET INVOLVED</h3>
+          <ul class="footer__section--list">
+            <li><a href="#">Contribute Bible</a></li>
+            <li><a href="#">Add New Movie</a></li>
+            <li><a href="#">Add New TV Show</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h3 class="footer__section--header">COMMUNITY</h3>
+          <ul class="footer__section--list">
+            <li><a href="#">Guidelines</a></li>
+            <li><a href="#">Discussions</a></li>
+            <li><a href="#">LeaderBoard</a></li>
+            <li><a href="#">Support Forums</a></li>
+          </ul>
+        </div>
+
+        <div class="footer__section">
+          <h3 class="footer__section--header">LEGAL</h3>
+          <ul class="footer__section--list">
+            <li><a href="#">Terms of Use</a></li>
+            <li><a href="#">API Terms of Use</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">DMCA Policy</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./main.js"></script>
+    <!-- <script type="module" src="./main2.js"></script> -->
+  </body>
+</html>
