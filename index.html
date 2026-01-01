@@ -556,6 +556,19 @@
 
                   <div class="userScore__range-container">
                     <div class="userScore__range-track"></div>
+                    <div class="userScore__ticks">
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                    </div>
                     <div class="userScore__range-fill" id="rangeFill"></div>
                     <input
                       type="range"
@@ -585,17 +598,30 @@
                 </div>
 
                 <div class="userVotes">
-                  <label for="" class="userVotes__label"
-                    >Minimum User Votes</label
-                  >
-                  <input
-                    type="range"
-                    max="500"
-                    min="0"
-                    step="50"
-                    class="userVotes__range"
-                    id="userVotesRange"
-                  />
+                  <label class="userVotes__label">Minimum User Votes</label>
+
+                  <div class="userVotes__range-container">
+                    <div class="userVotes__range-track"></div>
+                    <div class="userScore__ticks">
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                    </div>
+                    <div class="userVotes__range-fill" id="userVotesFill"></div>
+
+                    <input
+                      type="range"
+                      max="500"
+                      min="0"
+                      step="50"
+                      value="0"
+                      class="userVotes__range"
+                      id="userVotesRange"
+                    />
+                  </div>
+
                   <div class="userVotes__range__rates">
                     <span>0</span>
                     <span>100</span>
@@ -611,6 +637,29 @@
 
                   <div class="runTime__range-container">
                     <div class="runTime__range-track"></div>
+                    <div class="userScore__ticks">
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                      <span class="userScore__tick"></span>
+                    </div>
                     <div
                       class="runTime__range-fill"
                       id="rangeFillRuntime"
@@ -658,8 +707,10 @@
                 </div>
               </div>
             </div>
+            <div>
+              <button class="sort__filter__Btn" id="searchBtn">Search</button>
+            </div>
 
-            <button class="sort__filter__Btn" id="searchBtn">Search</button>
             <!-- <div class="spinner"></div> -->
           </aside>
 

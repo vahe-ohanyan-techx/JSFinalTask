@@ -15,8 +15,10 @@ const releaseDateFromInputEl = document.getElementById(
   "releaseDate__fromInput"
 );
 const releaseDateToInputEl = document.getElementById("releaseDate__toInput");
-const userVotesRangeEl = document.getElementById("userVotesRange");
 const spinnerEl = document.getElementById("spinner");
+
+const userVotesRangeEl = document.getElementById("userVotesRange");
+const userVotesFillEl = document.getElementById("userVotesFill");
 
 let stateOfPage = {
   currentPage: 1,
@@ -63,7 +65,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const minRuntimeEl = document.getElementById("minRuntime");
   const maxRuntimeEl = document.getElementById("maxRuntime");
   const rangeFillRuntimeEl = document.getElementById("rangeFillRuntime");
-
   if (minRangeInputEl && maxRangeInputEl && rangeFillEl) {
     const updateRangeFill = () => {
       const minValue = minRangeInputEl.value;
@@ -190,6 +191,11 @@ const buildUrl = () => {
   }
 
   return `${baseUrl}?${params.toString()}`;
+};
+
+const updateUserVotesFill = (value) => {
+  const percent = (value / 500) * 100;
+  userVotesFillEl.style.width = percent + "%";
 };
 
 const loadMoreMovies = async () => {
@@ -416,6 +422,7 @@ userVotesRangeEl.addEventListener("input", (e) => {
   const value = Number(e.target.value);
 
   stateOfPage.filters.vote_count_min = value;
+  updateUserVotesFill(value);
   searchBtnEl.style.backgroundColor = "var(--main-light-blue)";
   searchBtnEl.style.color = "var(--main-color)";
   searchBtnAppearedEl.style.backgroundColor = "var(--main-light-blue)";
@@ -491,8 +498,8 @@ const showError = (msg = "Please Try Again Later!") => {
 };
 
 window.addEventListener("scroll", () => {
-  const mainBtnRect = searchBtn.getBoundingClientRect();
+  const mainBtnRect = searchBtnEl.getBoundingClientRect();
   mainBtnRect.bottom < 0
-    ? (searchBtnAppeared.style.display = "block")
-    : (searchBtnAppeared.style.display = "none");
+    ? (searchBtnAppearedEl.style.display = "block")
+    : (searchBtnAppearedEl.style.display = "none");
 });
